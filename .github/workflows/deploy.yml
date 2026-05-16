@@ -1,8 +1,10 @@
 name: Deploy to InfinityFree
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -10,6 +12,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Create config.php from secrets
+        run: |
+          cat > config.php << 'EOF'
+          <?php
+          return [
+              'host' => '${{ secrets.DB_HOST }}',
+              'db'   => '${{ secrets.DB_NAME }}',
+              'user' => '${{ secrets.DB_USER }}',
+              'pass' => '${{ secrets.DB_PASS }}',
+          ];
+          EOF
+
       - name: Upload files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.2.0
         with:

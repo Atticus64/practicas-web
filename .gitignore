@@ -1,0 +1,11 @@
+# Archivos sensibles - NO subir al repositorio
+config.php
+
+# Archivos temporales
+*.log
+*.tmp
+
+# IDE
+.idea/
+.vscode/
+*.swp

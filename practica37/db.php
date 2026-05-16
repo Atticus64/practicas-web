@@ -2,14 +2,16 @@
 /**
  * Conexión a la base de datos - Práctica 37
  * ==========================================
- * Reutiliza la conexión de práctica 36
- * Los usuarios se guardan en la misma tabla "usuarios"
+ * Las credenciales se cargan desde config.php (no subido al repositorio)
+ * Reutiliza la misma tabla "usuarios" de práctica 36
  */
 
-$host = 'localhost';      // Cambiar después: host de InfinityFree
-$db   = 'tu_db';         // Cambiar después: nombre de tu base de datos
-$user = 'tu_usuario';    // Cambiar después: usuario de MySQL
-$pass = 'tu_password';   // Cambiar después: contraseña de MySQL
+$config = require __DIR__ . '/../config.php';
+
+$host = $config['host'];
+$db   = $config['db'];
+$user = $config['user'];
+$pass = $config['pass'];
 
 $charset = 'utf8mb4';
 

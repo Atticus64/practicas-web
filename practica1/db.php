@@ -2,17 +2,15 @@
 /**
  * Conexión a la base de datos usando PDO
  * =========================================
- * Configura aquí los datos de tu base de datos en InfinityFree:
- *   - Host: lo obtienes de InfinityFree (ej: sql313.infinityfree.com)
- *   - DB Name: nombre de la base de datos creada
- *   - User: usuario de la base de datos
- *   - Pass: contraseña de la base de datos
+ * Las credenciales se cargan desde config.php (no subido al repositorio)
  */
 
-$host = 'localhost';      // Cambiar después: host de InfinityFree
-$db   = 'tu_db';         // Cambiar después: nombre de tu base de datos
-$user = 'tu_usuario';    // Cambiar después: usuario de MySQL
-$pass = 'tu_password';   // Cambiar después: contraseña de MySQL
+$config = require __DIR__ . '/../config.php';
+
+$host = $config['host'];
+$db   = $config['db'];
+$user = $config['user'];
+$pass = $config['pass'];
 
 $charset = 'utf8mb4';
 
