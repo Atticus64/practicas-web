@@ -17,7 +17,7 @@ Una aplicación web sencilla desarrollada en PHP.
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/nombre-del-proyecto.git
+git clone https://github.com/Atticus64/practicas-web
 ```
 
 ### 2. Configurar XAMPP (Apache)
