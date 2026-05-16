@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 24 - Fecha actual con switch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f5f5f5;
+        }
+        h1 { color: #333; }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover { background: #45a049; }
+        .resultado {
+            background: #e8f5e9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Práctica 24 - Fecha actual con switch</h1>
+
+    <p>Usa la condición <code>switch</code> para el nombre del día y del mes.</p>
+
+    <button onclick="mostrarFecha()">Mostrar fecha actual</button>
+
+    <div class="resultado" id="resultado"></div>
+
+    <script>
+        function mostrarFecha() {
+            // Obtener la fecha actual
+            var fecha = new Date();
+
+            // Obtener día de la semana (0 = domingo, 6 = sábado)
+            var diaNumero = fecha.getDay();
+            // Obtener mes (0 = enero, 11 = diciembre)
+            var mesNumero = fecha.getMonth();
+            // Obtener día del mes
+            var diaMes = fecha.getDate();
+            // Obtener año
+            var año = fecha.getFullYear();
+
+            // Usar switch para el nombre del día
+            var nombreDia;
+            switch(diaNumero) {
+                case 0: nombreDia = "domingo"; break;
+                case 1: nombreDia = "lunes"; break;
+                case 2: nombreDia = "martes"; break;
+                case 3: nombreDia = "miércoles"; break;
+                case 4: nombreDia = "jueves"; break;
+                case 5: nombreDia = "viernes"; break;
+                case 6: nombreDia = "sábado"; break;
+            }
+
+            // Usar switch para el nombre del mes
+            var nombreMes;
+            switch(mesNumero) {
+                case 0: nombreMes = "Enero"; break;
+                case 1: nombreMes = "Febrero"; break;
+                case 2: nombreMes = "Marzo"; break;
+                case 3: nombreMes = "Abril"; break;
+                case 4: nombreMes = "Mayo"; break;
+                case 5: nombreMes = "Junio"; break;
+                case 6: nombreMes = "Julio"; break;
+                case 7: nombreMes = "Agosto"; break;
+                case 8: nombreMes = "Septiembre"; break;
+                case 9: nombreMes = "Octubre"; break;
+                case 10: nombreMes = "Noviembre"; break;
+                case 11: nombreMes = "Diciembre"; break;
+            }
+
+            // Formato: "Hoy es martes 24 de Marzo del año 2026"
+            var fechaFormateada = "Hoy es " + nombreDia + " " + diaMes + " de " + nombreMes + " del año " + año;
+
+            document.getElementById('resultado').innerHTML = fechaFormateada;
+        }
+    </script>
+
+    <p><a href="../index.php">← Volver al menú</a></p>
+</body>
+</html>

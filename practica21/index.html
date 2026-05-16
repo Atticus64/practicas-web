@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 21 - Operaciones aritméticas con formulario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f5f5f5;
+        }
+        h1 { color: #333; }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        button:hover { background: #45a049; }
+        .resultado {
+            background: #e8f5e9;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Práctica 21 - Operaciones aritméticas con formulario</h1>
+
+    <form id="calculadora">
+        <div class="form-group">
+            <label for="num1">Primer número:</label>
+            <input type="number" id="num1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="num2">Segundo número:</label>
+            <input type="number" id="num2" required>
+        </div>
+
+        <button type="button" onclick="calcular('suma')">Suma</button>
+        <button type="button" onclick="calcular('resta')">Resta</button>
+        <button type="button" onclick="calcular('division')">División</button>
+        <button type="button" onclick="calcular('exponenciacion')">Exponenciación</button>
+    </form>
+
+    <div class="resultado" id="resultado"></div>
+
+    <script>
+        function calcular(operacion) {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var resultado = document.getElementById('resultado');
+
+            if (isNaN(num1) || isNaN(num2)) {
+                resultado.innerHTML = "Por favor, ingresa ambos números.";
+                return;
+            }
+
+            var res;
+            var operacionTexto;
+
+            switch(operacion) {
+                case 'suma':
+                    res = num1 + num2;
+                    operacionTexto = "Suma";
+                    break;
+                case 'resta':
+                    res = num1 - num2;
+                    operacionTexto = "Resta";
+                    break;
+                case 'division':
+                    if (num2 === 0) {
+                        resultado.innerHTML = "No se puede dividir entre cero.";
+                        return;
+                    }
+                    res = num1 / num2;
+                    operacionTexto = "División";
+                    break;
+                case 'exponenciacion':
+                    res = Math.pow(num1, num2);
+                    operacionTexto = "Exponenciación";
+                    break;
+            }
+
+            resultado.innerHTML = "<strong>" + operacionTexto + ":</strong> " + num1 + " " + getOperador(operacion) + " " + num2 + " = " + res;
+        }
+
+        function getOperador(operacion) {
+            switch(operacion) {
+                case 'suma': return '+';
+                case 'resta': return '-';
+                case 'division': return '/';
+                case 'exponenciacion': return '**';
+            }
+        }
+    </script>
+
+    <p><a href="../index.php">← Volver al menú</a></p>
+</body>
+</html>

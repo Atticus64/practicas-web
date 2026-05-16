@@ -1,0 +1,29 @@
+name: Deploy to InfinityFree
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Upload files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.2.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./
+          destination-dir: /htdocs/
+          # Excluir archivos que no quieres subir
+          exclude: |
+            **/.git*
+            **/.github*
+            **/README.md
+            **/.gitignore

@@ -1,0 +1,4 @@
+name: pages
+owner: atticus64
+package: .
+kind: wasmer.io/App.v0

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 19 - Salidas de texto en JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f5f5f5;
+        }
+        h1 { color: #333; }
+        .section {
+            background: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem 0;
+        }
+        button:hover { background: #45a049; }
+        #salida1, #salida2, #salida3 { margin-top: 0.5rem; padding: 0.5rem; background: #e8f5e9; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Práctica 19 - Salidas de texto en JavaScript</h1>
+
+    <div class="section">
+        <h2>Datos personales:</h2>
+        <ul>
+            <li>Nombre: Juan Pérez López</li>
+            <li>Edad: 22 años</li>
+            <li>Carrera: Ingeniería en Sistemas</li>
+            <li>Universidad: Universidad Nacional</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>1. console.log()</h2>
+        <p>Abre la consola del navegador (F12) para ver el resultado.</p>
+        <button onclick="mostrarConsola()">Ejecutar console.log</button>
+    </div>
+
+    <div class="section">
+        <h2>2. document.write()</h2>
+        <button onclick="mostrarDocumento()">Ejecutar document.write</button>
+        <div id="salida1"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. innerHTML</h2>
+        <button onclick="mostrarInnerHTML()">Ejecutar innerHTML</button>
+        <div id="salida2"></div>
+    </div>
+
+    <div class="section">
+        <h2>4. alert()</h2>
+        <button onclick="mostrarAlert()">Ejecutar alert</button>
+    </div>
+
+    <div class="section">
+        <h2>5. innerText</h2>
+        <button onclick="mostrarInnerText()">Ejecutar innerText</button>
+        <div id="salida3"></div>
+    </div>
+
+    <script>
+        // Datos personales
+        const nombre = "Juan Pérez López";
+        const edad = 22;
+        const carrera = "Ingeniería en Sistemas";
+        const universidad = "Universidad Nacional";
+
+        // 1. console.log - Muestra en la consola del navegador
+        function mostrarConsola() {
+            console.log("=== Datos Personales (console.log) ===");
+            console.log("Nombre: " + nombre);
+            console.log("Edad: " + edad);
+            console.log("Carrera: " + carrera);
+            console.log("Universidad: " + universidad);
+        }
+
+        // 2. document.write - Escribe directamente en el documento
+        function mostrarDocumento() {
+            document.getElementById('salida1').innerHTML =
+                "<strong>Nombre:</strong> " + nombre + "<br>" +
+                "<strong>Edad:</strong> " + edad + "<br>" +
+                "<strong>Carrera:</strong> " + carrera + "<br>" +
+                "<strong>Universidad:</strong> " + universidad;
+        }
+
+        // 3. innerHTML - Modifica el contenido HTML de un elemento
+        function mostrarInnerHTML() {
+            document.getElementById('salida2').innerHTML =
+                "<p>Nombre: <strong>" + nombre + "</strong></p>" +
+                "<p>Edad: <strong>" + edad + "</strong></p>" +
+                "<p>Carrera: <strong>" + carrera + "</strong></p>" +
+                "<p>Universidad: <strong>" + universidad + "</strong></p>";
+        }
+
+        // 4. alert - Muestra una ventana emergente
+        function mostrarAlert() {
+            alert("Datos Personales:\n\n" +
+                  "Nombre: " + nombre + "\n" +
+                  "Edad: " + edad + "\n" +
+                  "Carrera: " + carrera + "\n" +
+                  "Universidad: " + universidad);
+        }
+
+        // 5. innerText - Modifica el contenido de texto (sin HTML)
+        function mostrarInnerText() {
+            document.getElementById('salida3').innerText =
+                "Nombre: " + nombre + ", Edad: " + edad +
+                ", Carrera: " + carrera + ", Universidad: " + universidad;
+        }
+    </script>
+
+    <p><a href="../index.php">← Volver al menú</a></p>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 26 - Tablas de multiplicar hasta N</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #f5f5f5;
+        }
+        h1 { color: #333; }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        input {
+            width: 200px;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover { background: #45a049; }
+        .tablas-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .tabla {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            min-width: 150px;
+        }
+        .tabla h3 {
+            color: #4CAF50;
+            margin: 0 0 0.5rem 0;
+            border-bottom: 2px solid #4CAF50;
+        }
+        .tabla p {
+            margin: 0.2rem 0;
+            font-size: 0.9rem;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Práctica 26 - Tablas de multiplicar hasta N</h1>
+
+    <form id="tablasForm">
+        <div class="form-group">
+            <label for="numero">Ingresa un número positivo:</label>
+            <input type="number" id="numero" min="1" required>
+        </div>
+
+        <button type="button" onclick="generarTablas()">Generar tablas de multiplicar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function generarTablas() {
+            var n = parseInt(document.getElementById('numero').value);
+            var container = document.getElementById('resultado');
+
+            if (isNaN(n) || n < 1) {
+                container.innerHTML = '<div class="error">Por favor, ingresa un número positivo mayor a 0.</div>';
+                return;
+            }
+
+            var html = '<div class="tablas-container">';
+
+            // Ciclo del 1 al N
+            for (var i = 1; i <= n; i++) {
+                html += '<div class="tabla">';
+                html += '<h3>Tabla del ' + i + '</h3>';
+
+                // Ciclo del 1 al 10 para cada tabla
+                for (var j = 1; j <= 10; j++) {
+                    html += '<p>' + i + ' × ' + j + ' = ' + (i * j) + '</p>';
+                }
+
+                html += '</div>';
+            }
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+    </script>
+
+    <p><a href="../index.php">← Volver al menú</a></p>
+</body>
+</html>
